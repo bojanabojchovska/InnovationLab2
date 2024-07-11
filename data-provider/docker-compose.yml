@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  hospital1:
+    container_name: hospital1
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: hospital1
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: pass1
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./init1:/docker-entrypoint-initdb.d
+      - hospital1_data:/var/lib/postgresql/data
+
+  hospital2:
+    container_name: hospital2
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: hospital2
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: pass1
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./init2:/docker-entrypoint-initdb.d
+      - hospital2_data:/var/lib/postgresql/data
+
+  hospital3:
+    container_name: hospital3
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: hospital3
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: pass1
+    ports:
+      - "5435:5432"
+    volumes:
+      - ./init3:/docker-entrypoint-initdb.d
+      - hospital3_data:/var/lib/postgresql/data
+
+volumes:
+  hospital1_data:
+  hospital2_data:
+  hospital3_data:

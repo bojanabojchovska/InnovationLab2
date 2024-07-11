@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Innovation lab</title>
+</head>
+<body>
+<h1>Hello world</h1>
+
+<div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+        <!-- For each user -->
+        <tr class="item" th:each="user: ${users}">
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.role}"></td>
+            <td>
+                <!--??????????-->
+                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                    <!-- UserController.delete (Only ADMIN can see this element)-->
+                    <form th:method="post" th:action="@{'/users/' + ${user.id} + '/delete'}">
+                        <button type="submit" class="delete-item">Delete</button>
+                    </form>
+                    <!-- UserController.showEdit (Only ADMIN can see this element)-->
+                    <a th:href="@{'/users/' + ${user.id} + '/edit'}" class="edit-item">Edit</a>
+                </th:block>
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+<div>
+    <ul id="nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</div>
+</body>
+</html>

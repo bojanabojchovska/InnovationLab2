@@ -1,0 +1,9 @@
+org\example\repository\UserRepository.class
+org\example\config\DataInitializer.class
+org\example\model\User.class
+org\example\InnoLab.class
+org\example\model\Role.class
+org\example\service\UserServiceImplementation.class
+org\example\config\SecurityConfig.class
+org\example\service\UserService.class
+org\example\controller\UserController.class

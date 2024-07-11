@@ -1,0 +1,49 @@
+# Konfiguration
+version: '3.8'
+services:
+
+  # API-Gateway
+  api-gateway:
+    build: api-gateway
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
+
+  # Authentifizierungsservice
+  auth-service:
+    build: auth-service
+    container_name: auth-service
+
+  # User-Service
+  user-service:
+    build: user-service
+    container_name: user-service
+    depends_on:
+      - db
+
+  # Data-Service
+  data-service:
+    build: data-service
+    container_name: data-service
+
+
+  # Analysefunktionen
+  analysis-service:
+    build: analysis-service
+    container_name: analysis-service
+
+  # User DB
+  db:
+    image: postgres
+    container_name: user-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: user_db
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: pass1
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
