@@ -1,4 +1,4 @@
-# InnovationLab eHealth Prototype
+# Innovation Lab Project eHealth Prototype
 
 ## Overview
 This project is an eHealth Data Space Prototype that involves a Central Node managing user data and interfacing with data providers from three different hospitals. It utilizes Spring Boot for the backend services, React for the frontend user portal, and integrates multiple data sources to simulate a federated healthcare data system.
